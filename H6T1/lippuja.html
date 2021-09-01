@@ -1,0 +1,49 @@
+<!doctype html>
+<head>
+<html>
+<title>Roopen lippujuttuja</title>
+<script>
+function drawToCanvas(){
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "blue";
+    ctx.fillRect(100,100,300,200);
+
+    ctx.fillStyle = "yellow";
+    ctx.fillRect(185,100,50,200);
+    ctx.fillRect(100,170,300,50);
+
+    
+    
+    ctx.fillStyle = "green";
+    ctx.fillRect(100,400,300,200);
+    
+    ctx.strokeStyle = "white";
+    ctx.fillStyle = "yellow";
+    ctx.beginPath();
+    ctx.moveTo(100,600);
+    ctx.lineTo(100,400);
+    ctx.lineTo(400,500);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.strokeStyle = "black";
+    ctx.fillStyle = "red";
+    ctx.beginPath();
+    ctx.moveTo(100,600);
+    ctx.lineTo(100,400);
+    ctx.lineTo(260,500);
+    ctx.fill();
+
+}
+</script>
+
+
+<body onload="drawToCanvas()">
+<div>
+    <canvas	id="canvas"  width="1000" height="800"></canvas>
+</div>
+</body>
+</head>
+</html>

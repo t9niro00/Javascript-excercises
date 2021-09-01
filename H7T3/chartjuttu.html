@@ -1,0 +1,74 @@
+<html>
+<title>Chart.js-esimerkki</title>
+<body>
+
+<h2>Autolaskuri</h2>
+<button type="button" id="ford" onclick="addcar('0')">Ford</button> <button type="button" id="opel">Opel</button> <button type="button" id="toyota">Toyota</button> <button type="button" id="nollaa" onclick="removeData()">Nollaa</button>
+<canvas id="myChart" width="400" height="400"></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+<script>
+  
+function drawChart(){
+  var carnumber = 1;
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ["Ford", "Opel", "Toyota"],
+        datasets: [{
+            label: "Autojen lukumäärät",
+            data: [carnumber, carnumber, carnumber],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)'
+                
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+	responsive: false,
+        scales: {
+            yAxes: [{
+                barThickness: 53,
+                ticks: {
+                    beginAtZero:true
+                }
+            }],
+            xAxes: [{
+                barThickness: 50
+            }]
+        }
+   }
+    
+});
+  
+  
+}
+function addcar(carnumber){
+  myChart.data.datasets[0].data[1] = 50;
+  myChart.update();
+}
+  
+function removeData(){
+   myChart.data.labels.pop();
+   myChart.data.datasets[0].data.pop();
+   myChart.update();
+}
+</script>
+
+
+<body onload="drawChart()">
+</body></html>
